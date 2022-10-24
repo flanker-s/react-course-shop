@@ -1,5 +1,4 @@
-import React from 'react'
-import {IProduct} from "../models";
+import {IProduct} from "../models"
 
 interface ProductProps {
     product: IProduct
@@ -21,7 +20,7 @@ function Product({product}: ProductProps) {
 
                 <footer className="h-1/6 w-full">
                     <div className="mt-3 flex justify-between items-center">
-                        <button className="leading-5">Preview</button>
+                        <button className="leading-5">Details</button>
                         <button className="font-bold shadow px-3 py-2 border rounded text-lg text-center leading-5 border-green-500 text-green-500">{"Cart"}</button>
                     </div>
                 </footer>
