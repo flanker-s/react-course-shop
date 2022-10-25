@@ -25,10 +25,16 @@ function useProducts() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
     const [products, setProducts] = useState<IProduct[]>([])
+
+    const addProduct = (product: IProduct) => {
+        setProducts(prev=>[product, ...prev])
+    }
+
     return{
         loading,
         error,
-        products
+        products,
+        addProduct
     }
 
 }

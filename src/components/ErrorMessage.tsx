@@ -1,11 +1,11 @@
 
 interface ErrorMessageProps{
-    error: string
+    message: string
 }
 
-function ErrorMessage({error}: ErrorMessageProps) {
+function ErrorMessage({message}: ErrorMessageProps) {
     return (
-        <p className={'text-center text-red-600'}>{error}</p>
+        <p className={'text-center text-red-600'}>{message}</p>
     )
 }
 
