@@ -7,7 +7,7 @@ import CreateProduct from '../components/CreateProduct'
 import {useContext} from 'react'
 import {ModalContext} from '../contexts/ModalContext'
 
-function ProductsPage() {
+function CatalogPage() {
     const {loading, error, products, addProduct} = useProducts()
     const {modal, openModal, closeModal} = useContext(ModalContext)
 
@@ -41,4 +41,4 @@ function ProductsPage() {
     )
 }
 
-export default ProductsPage
+export default CatalogPage
