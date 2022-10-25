@@ -2,40 +2,38 @@ import {useEffect, useState} from 'react'
 import axios, {AxiosError} from 'axios'
 import {IProduct} from '../models'
 
-function useProducts() {
+interface CategoryProductsProps {
+    category: string
+}
+
+function useCategoryProducts({category}: CategoryProductsProps) {
 
     function fetchProducts(){
         setError('')
         setLoading(true)
-        axios.get<IProduct[]>('https://fakestoreapi.com/products')
+        axios.get<IProduct[]>('https://fakestoreapi.com/products/category/' + category)
             .then((response)=>{
                 setProducts(response.data)
-                setLoading(false)
             })
             .catch((e)=> {
                 const error = e as AxiosError
-                setLoading(false)
                 setError(error.message)
             })
+            .finally(()=>setLoading(false))
     }
     useEffect(()=>{
         fetchProducts()
-    }, [])
+    }, [category])
 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
     const [products, setProducts] = useState<IProduct[]>([])
 
-    const addProduct = (product: IProduct) => {
-        setProducts(prev=>[product, ...prev])
-    }
-
     return{
         loading,
         error,
         products,
-        addProduct
     }
 }
 
-export default useProducts
+export default useCategoryProducts

@@ -8,7 +8,7 @@ interface  MenuItemProps{
 function MenuItem({category}: MenuItemProps) {
     return (
         <Link
-            to={`https://fakestoreapi.com/products/category/${category}`}
+            to={`/products/category/${category}`}
             className="block box-border"
         >
             {category.charAt(0).toUpperCase() + category.slice(1)}

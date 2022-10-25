@@ -12,7 +12,7 @@ function Menu() {
             {!loading && <ul className="absolute px-3 py-2 bg-gray-500">
                 {error && <ErrorMessage message={error}/>}
                 {categories?.map((category) => {
-                    return <MenuItem category={category}/>
+                    return <MenuItem key={category} category={category}/>
                 })}</ul>
             }
         </>
