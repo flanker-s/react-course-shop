@@ -5,12 +5,13 @@ import ErrorMessage from './components/ErrorMessage'
 import Loader from './components/Loader'
 import Modal from './components/Modal'
 import CreateProduct from './components/CreateProduct'
-import {useState} from 'react'
+import {useContext, useState} from 'react'
+import {ModalContext, ModalState} from './contexts/ModalContext'
 
 function App() {
 
     const {loading, error, products, addProduct} = useProducts()
-    const [isModalVisible, setIsModalVisible] = useState(false)
+    const {modal, openModal, closeModal} = useContext(ModalContext)
 
     return (
         <>
@@ -20,19 +21,19 @@ function App() {
                 <div className="w-full flex justify-center">
                     <button
                         className="border py-2 px-4 bg-yellow-400 text-center"
-                        onClick={() => setIsModalVisible(true)}>
+                        onClick={openModal}>
                         Create product
                     </button>
                 </div>
                 <ProductList products={products}/>
-                {isModalVisible &&
+                {modal &&
                 <Modal
                     title="Create product"
-                    onClose={() => setIsModalVisible(false)}
+                    onClose={closeModal}
                 >
                     <CreateProduct
                         onCreate={(product) => {
-                            setIsModalVisible(false)
+                            closeModal()
                             addProduct(product)
                         }}
                     />
