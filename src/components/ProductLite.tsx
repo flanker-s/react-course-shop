@@ -1,5 +1,6 @@
 import React from 'react'
 import {IProduct} from "../models";
+import {Link} from 'react-router-dom'
 
 interface ProductProps {
     product: IProduct
@@ -19,7 +20,7 @@ function ProductLite({product}: ProductProps) {
                 <img src={product.image} alt={product.title} className="py-2 h-1/2 w-full object-contain shadow-none"/>
                 <footer className="h-2/12 w-full">
                     <div className="mt-3 flex justify-between items-center">
-                        <button className="leading-5">Details</button>
+                        <Link to={`/products/${product.id}`} className="leading-5">Details</Link>
                         <button className="font-bold shadow px-3 py-2 border rounded text-lg text-center leading-5 border-green-500 text-green-500">{"Cart"}</button>
                     </div>
                 </footer>

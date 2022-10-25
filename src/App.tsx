@@ -1,44 +1,17 @@
 import './App.css'
-import ProductList from "./components/ProductList"
-import useProducts from './hooks/products'
-import ErrorMessage from './components/ErrorMessage'
-import Loader from './components/Loader'
-import Modal from './components/Modal'
-import CreateProduct from './components/CreateProduct'
-import {useContext, useState} from 'react'
-import {ModalContext, ModalState} from './contexts/ModalContext'
+import {Route, Routes} from 'react-router-dom'
+import ProductsPage from './pages/ProductsPage'
+import AboutPage from './pages/AboutPage'
+import Navigation from './components/Navigation'
 
 function App() {
-
-    const {loading, error, products, addProduct} = useProducts()
-    const {modal, openModal, closeModal} = useContext(ModalContext)
-
     return (
         <>
-            <div className="py-2 px-4 w-2/3 mx-auto flex-col">
-                {loading && <Loader/>}
-                {error && <ErrorMessage message={error}/>}
-                <div className="w-full flex justify-center">
-                    <button
-                        className="border py-2 px-4 bg-yellow-400 text-center"
-                        onClick={openModal}>
-                        Create product
-                    </button>
-                </div>
-                <ProductList products={products}/>
-                {modal &&
-                <Modal
-                    title="Create product"
-                    onClose={closeModal}
-                >
-                    <CreateProduct
-                        onCreate={(product) => {
-                            closeModal()
-                            addProduct(product)
-                        }}
-                    />
-                </Modal>}
-            </div>
+        <Navigation />
+        <Routes>
+            <Route path="/" element={<ProductsPage />}/>
+            <Route path="/about" element={<AboutPage />}/>
+        </Routes>
         </>
     )
 }
