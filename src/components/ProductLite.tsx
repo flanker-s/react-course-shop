@@ -1,5 +1,5 @@
 import React from 'react'
-import {IProduct} from "../models";
+import {IProduct} from "../models"
 import {Link} from 'react-router-dom'
 
 interface ProductProps {
