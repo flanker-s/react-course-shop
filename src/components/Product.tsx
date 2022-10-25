@@ -1,4 +1,5 @@
-import {IProduct} from "../models"
+import {IProduct} from '../models'
+import React from 'react'
 
 interface ProductProps {
     product: IProduct
@@ -6,24 +7,22 @@ interface ProductProps {
 
 function Product({product}: ProductProps) {
     return (
-        <div className="p-1 h-96 box-border w-1/4">
-            <div className="py-2 px-4 h-full border shadow rounded flex flex-col justify-around items-center">
-                <header className="h-2/6 w-full flex flex-col justify-between">
-                    <h3 className="h-2/3 text-lg font-bold"> {cutString(product.title, 40)}</h3>
-                    <div className="h-1/3 flex w-full items-center justify-between">
-                        <p className="text-xs">{product.category}</p>
-                        <p className="pb-2 font-bold text-center text-xl text-green-500 shadow-none">{product.price + '$'}</p>
-                    </div>
-                </header>
+        <div className="p-1 box-border flex">
 
-                <img src={product.image} alt={product.title} className="py-2 h-3/6 object-contain shadow-none"/>
-
-                <footer className="h-1/6 w-full">
-                    <div className="mt-3 flex justify-between items-center">
-                        <button className="leading-5">Details</button>
-                        <button className="font-bold shadow px-3 py-2 border rounded text-lg text-center leading-5 border-green-500 text-green-500">{"Cart"}</button>
-                    </div>
-                </footer>
+            <img className="p-2 w-1/2 object-contain h-screen shadow-none mx-auto"
+                 src={product.image}
+                 alt={product.title}
+            />
+            <div className="flex-col w-1/2 p-2 h-screen">
+                <h1 className="text-4xl font-bold"> {cutString(product.title, 160)}</h1>
+                <div className="">
+                    <p className="py-2 text-xl">{product.description}</p>
+                    <p className="pb-2 font-bold text-6xl text-green-500">{product.price + '$'}</p>
+                    <button
+                        className="font-bold shadow px-3 py-2 border h-20 w-40 rounded text-2xl text-center leading-5 border-green-500 text-green-500">
+                        {'Cart'}
+                    </button>
+                </div>
             </div>
         </div>
     )
