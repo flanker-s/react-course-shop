@@ -24,7 +24,7 @@ function SingleProductPage() {
     const [error, setError] = useState('')
 
     return (
-        <div className="py-2 px-4 mx-auto flex-col">
+        <div className="flex-col">
             {product ? <Product product={product} /> : <ErrorMessage message={error}/>}
         </div>)
 }

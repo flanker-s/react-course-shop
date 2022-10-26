@@ -14,7 +14,7 @@ function CategoryPage() {
 
     return (
         <>
-            <div className="py-2 px-4 w-2/3 mx-auto flex-col">
+            <div className="flex-col">
                 {loading && <Loader/>}
                 {error && <ErrorMessage message={error}/>}
                 <ProductList products={products}/>

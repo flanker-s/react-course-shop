@@ -10,12 +10,14 @@ function App() {
     return (
         <>
             <Header/>
-            <Routes>
-                <Route path="/" element={<CatalogPage/>}/>
-                <Route path="/about" element={<AboutPage/>}/>
-                <Route path="/products/category/:category" element={<CategoryPage/>}/>
-                <Route path="/products/:id" element={<SingleProductPage/>}/>
-            </Routes>
+            <main className="container mx-auto max-w-2xl">
+                <Routes>
+                    <Route path="/" element={<CatalogPage/>}/>
+                    <Route path="/about" element={<AboutPage/>}/>
+                    <Route path="/products/category/:category" element={<CategoryPage/>}/>
+                    <Route path="/products/:id" element={<SingleProductPage/>}/>
+                </Routes>
+            </main>
         </>
     )
 }
