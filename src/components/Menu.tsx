@@ -1,11 +1,17 @@
-import React from 'react'
-import useCategories from '../hooks/categories'
+import React, {useEffect} from 'react'
 import ErrorMessage from './ErrorMessage'
 import MenuItem from './MenuItem'
+import {useAppDispatch, useAppSelector} from '../hooks/redux'
+import {fetchCategories} from '../store/actions/categoryActions'
 
 function Menu() {
 
-    const {categories, loading, error} = useCategories()
+    const dispatch = useAppDispatch()
+    const {loading, categories, error} = useAppSelector(state => state.categories)
+
+    useEffect(()=>{
+        dispatch(fetchCategories())
+    }, [])
 
     return (
         <>

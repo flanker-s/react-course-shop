@@ -1,15 +1,22 @@
 import ProductList from "../components/ProductList"
-import useProducts from '../hooks/products'
 import ErrorMessage from '../components/ErrorMessage'
 import Loader from '../components/Loader'
 import Modal from '../components/Modal'
 import CreateProduct from '../components/CreateProduct'
-import {useContext} from 'react'
+import {useContext, useEffect} from 'react'
+import {createProduct, fetchProducts} from '../store/actions/productActions'
+import {useAppDispatch, useAppSelector} from '../hooks/redux'
 import {ModalContext} from '../contexts/ModalContext'
 
 function CatalogPage() {
-    const {loading, error, products, addProduct} = useProducts()
+
+    const dispatch = useAppDispatch()
+    const {loading, products, error} = useAppSelector(state => state.products)
     const {modal, openModal, closeModal} = useContext(ModalContext)
+
+    useEffect(()=> {
+        dispatch(fetchProducts())
+    }, [])
 
     return (
         <>
@@ -32,7 +39,7 @@ function CatalogPage() {
                     <CreateProduct
                         onCreate={(product) => {
                             closeModal()
-                            addProduct(product)
+                            dispatch(createProduct(product))
                         }}
                     />
                 </Modal>}

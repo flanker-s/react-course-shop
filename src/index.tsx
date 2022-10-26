@@ -5,17 +5,24 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {ModalState} from './contexts/ModalContext'
 import {BrowserRouter} from 'react-router-dom'
+import  {Provider} from 'react-redux'
+import {setupStore} from './store'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const store = setupStore()
+
 root.render(
   <React.StrictMode>
-      <BrowserRouter>
-          <ModalState>
-              <App />
-          </ModalState>
-      </BrowserRouter>
+      <Provider store={store}>
+          <BrowserRouter>
+              <ModalState>
+                  <App />
+              </ModalState>
+          </BrowserRouter>
+      </Provider>
   </React.StrictMode>
 );
 

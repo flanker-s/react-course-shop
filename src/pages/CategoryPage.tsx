@@ -2,7 +2,9 @@ import ProductList from "../components/ProductList"
 import ErrorMessage from '../components/ErrorMessage'
 import Loader from '../components/Loader'
 import {useParams} from 'react-router'
-import useCategoryProducts from '../hooks/categoryProducts'
+import {useAppDispatch, useAppSelector} from '../hooks/redux'
+import {useEffect} from 'react'
+import {fetchProductsByCategory} from '../store/actions/productActions'
 
 function CategoryPage() {
 
@@ -10,7 +12,13 @@ function CategoryPage() {
     const categoryProductsProps = {
         category: category ?? ''
     }
-    const {loading, error, products} = useCategoryProducts(categoryProductsProps)
+
+    const dispatch = useAppDispatch()
+    const {loading, products, error} = useAppSelector(state => state.products)
+
+    useEffect(()=> {
+        dispatch(fetchProductsByCategory(categoryProductsProps.category))
+    }, [category])
 
     return (
         <>
