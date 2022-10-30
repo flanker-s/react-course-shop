@@ -10,3 +10,17 @@ export interface IProduct {
         count: number
     }
 }
+
+export interface ICategory {
+    name: string
+}
+
+export interface IAuthCredentials{
+    username: string,
+    token: string,
+}
+
+export interface ILoginCredentials{
+    username: string,
+    password: string,
+}

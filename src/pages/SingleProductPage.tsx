@@ -1,31 +1,19 @@
-import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router';
 import Product from '../components/Product'
-import {IProduct} from '../models'
-import axios, {AxiosError} from 'axios'
 import ErrorMessage from '../components/ErrorMessage'
+import { useGetProductQuery } from '../features/products/productApiSlice'
 
 function SingleProductPage() {
 
-    useEffect(()=>{
-        setError('')
-        axios.get<IProduct>('https://fakestoreapi.com/products/' + id)
-            .then((response)=>{
-                setProduct(response.data)
-            })
-            .catch((e)=>{
-                const error = e as AxiosError
-                setError(error.message)
-            })
-    }, [])
-
     const {id} = useParams()
-    const [product, setProduct] = useState<IProduct>()
-    const [error, setError] = useState('')
+    const { data: product, isError, error } = useGetProductQuery(id ?? '1')
+    console.log(product)
 
     return (
         <div className="flex-col">
-            {product ? <Product product={product} /> : <ErrorMessage message={error}/>}
+            
+             {isError && <ErrorMessage error={error}/>}
+             {product && <Product product={product} />}
         </div>)
 }
 

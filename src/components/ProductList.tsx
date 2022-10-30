@@ -1,17 +1,16 @@
-import React from 'react'
-import ProductLite from "./ProductLite";
+import ProductCard from "./ProductCard";
 import {IProduct} from '../models'
 
 interface ProductListProps {
-    products: IProduct[]
+    products?: IProduct[]
 }
 
 function ProductList({products}:ProductListProps) {
     return (
         <div className="flex flex-wrap">
             {
-                products.map((val) => {
-                    return <ProductLite key={val.id} product={val} />
+                products?.map((val) => {
+                    return <ProductCard key={val.id} product={val} />
                 })
             }
         </div>

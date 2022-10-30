@@ -1,24 +1,17 @@
-import React, {useEffect} from 'react'
 import ErrorMessage from './ErrorMessage'
 import MenuItem from './MenuItem'
-import {useAppDispatch, useAppSelector} from '../hooks/redux'
-import {fetchCategories} from '../store/actions/categoryActions'
+import { useGetCategoriesQuery } from '../features/categories/categoryApiSlice'
 
 function Menu() {
 
-    const dispatch = useAppDispatch()
-    const {loading, categories, error} = useAppSelector(state => state.categories)
-
-    useEffect(()=>{
-        dispatch(fetchCategories())
-    }, [])
+    const {data : categories, isLoading, isError, error} = useGetCategoriesQuery([])
 
     return (
         <>
-            {!loading && <ul className="absolute px-3 py-2 bg-gray-500">
-                {error && <ErrorMessage message={error}/>}
-                {categories?.map((category) => {
-                    return <MenuItem key={category} category={category}/>
+            {!isLoading && <ul className="absolute px-3 py-2 bg-gray-500">
+                {isError && <ErrorMessage error={error}/>}
+                {categories?.map((category, i) => {
+                    return <MenuItem key={category.toString()} category={category.toString()}/>
                 })}</ul>
             }
         </>

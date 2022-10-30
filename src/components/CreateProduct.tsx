@@ -46,7 +46,7 @@ function CreateProduct( {onCreate}: CreateProductProps) {
 
     return (
         <form className="flex flex-col justify-center" onSubmit={submitHandler}>
-            {error && <ErrorMessage message={error}/>}
+            {/* {error && <ErrorMessage message={error}/>} */}
             <input
                 type="text"
                 className="border py-2 px-4 mb-2"

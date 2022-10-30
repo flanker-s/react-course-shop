@@ -6,13 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import {ModalState} from './contexts/ModalContext'
 import {BrowserRouter} from 'react-router-dom'
 import  {Provider} from 'react-redux'
-import {setupStore} from './store'
+import {store} from './app/store'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-
-const store = setupStore()
 
 root.render(
   <React.StrictMode>

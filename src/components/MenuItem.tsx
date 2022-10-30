@@ -11,7 +11,7 @@ function MenuItem({category}: MenuItemProps) {
             to={`/products/category/${category}`}
             className="block box-border"
         >
-            {category.charAt(0).toUpperCase() + category.slice(1)}
+            {category?.charAt(0).toUpperCase() + category?.slice(1)}
         </Link>
     )
 }

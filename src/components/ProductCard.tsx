@@ -6,7 +6,7 @@ interface ProductProps {
     product: IProduct
 }
 
-function ProductLite({product}: ProductProps) {
+function ProductCard({product}: ProductProps) {
     return (
         <div className="p-1 h-96 box-border w-1/4">
             <div className="py-2 px-4 h-full border shadow rounded flex flex-col justify-between items-center">
@@ -40,4 +40,4 @@ function cutString(str: string, symbols: number) {
     return short
 }
 
-export default ProductLite
+export default ProductCard
